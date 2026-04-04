@@ -1,0 +1,26 @@
+[
+  {
+    "question": "What is a high-risk AI system under the EU AI Act?",
+    "ground_truth": "High-risk AI systems are listed in Annex III and include systems used in critical infrastructure, education, employment, law enforcement, migration, justice, and democratic processes, subject to the conditions in the Act."
+  },
+  {
+    "question": "What does the Retrieval-Augmented Generation paper propose?",
+    "ground_truth": "RAG combines pre-trained parametric memory with non-parametric memory—dense passage retrieval from Wikipedia—to make language models more factual and interpretable for knowledge-intensive NLP tasks."
+  },
+  {
+    "question": "Are general-purpose AI models regulated separately in the EU AI Act?",
+    "ground_truth": "Yes. The Act includes specific obligations for general-purpose AI models and more stringent rules for models with systemic risk."
+  },
+  {
+    "question": "What is the main idea of the Transformer architecture paper?",
+    "ground_truth": "The Transformer relies entirely on attention mechanisms, dispensing with recurrence and convolutions, and achieves strong results on machine translation using encoder-decoder stacks of self-attention and feed-forward layers."
+  },
+  {
+    "question": "What penalties or fines are associated with non-compliance under the EU AI Act framework?",
+    "ground_truth": "The Regulation provides for administrative fines tied to tiers of infringement, including percentages of global annual turnover and fixed amounts for certain violations, as specified in its penalty provisions."
+  },
+  {
+    "question": "How does RAG differ from only scaling model parameters for open-domain QA?",
+    "ground_truth": "RAG accesses external evidence at query time via retrieval instead of storing all facts in parameters, improving factuality and allowing grounded attribution to sources."
+  }
+]

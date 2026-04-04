@@ -1,0 +1,16 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+data/chroma/
+data/raw/
+*.sqlite3
+.DS_Store
+.idea/
+.vscode/
+eval_history/runs.jsonl
+.flashrank_cache/
+!eval_history/.gitkeep
