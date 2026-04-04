@@ -45,7 +45,18 @@ flowchart LR
 
 **Why Chroma (not Qdrant here):** embedded, file-backed vector search fits local dev and Hugging Face Spaces without running a separate vector service. You can swap `src/vector_store.py` for Qdrant’s client if you already operate a cluster.
 
-## Quick start
+## Where to put your API key (no keys in git)
+
+| Where you run | How you set `OPENAI_API_KEY` |
+|---------------|------------------------------|
+| **This laptop** | Create a `.env` file (see `.env.example`). It is gitignored—never commit it. |
+| **GitHub Codespaces** | Repo → **Settings** → **Secrets and variables** → **Codespaces** → **New repository secret** → name `OPENAI_API_KEY`. Codespaces inject it as an environment variable when the container starts—no `.env` file needed. Use **Code** → **Codespaces** → create a codespace; this repo includes `.devcontainer/` so dependencies install automatically. |
+| **GitHub Actions** (CI) | **Settings** → **Secrets and variables** → **Actions** → repository secret `OPENAI_API_KEY`. Only workflows you define can read it—not your local clone. |
+| **Hugging Face Space** | Space → **Settings** → **Repository secrets** → `OPENAI_API_KEY`. |
+
+GitHub does **not** push “repo secrets” to your machine when you `git clone`. Secrets stay on GitHub and are only exposed to Codespaces or Actions you configure.
+
+## Quick start (local)
 
 ```bash
 python -m venv .venv
