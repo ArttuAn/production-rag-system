@@ -33,7 +33,7 @@ def build_eval_samples() -> list[dict]:
     for item in load_gold_pairs():
         q = item["question"]
         contexts, _ = retrieve_contexts(q)
-        answer = generate_answer(q, contexts)
+        answer, _ = generate_answer(q, contexts)
         rows.append(
             {
                 "user_input": q,
@@ -89,6 +89,40 @@ def load_history_dataframe() -> pd.DataFrame:
 
 
 def run_eval_and_record() -> dict:
+    trace: list[dict] = []
+    pairs = load_gold_pairs()
+    trace.append(
+        {
+            "name": "Gold eval set",
+            "status": "ok" if pairs else "error",
+            "detail": f"**{len(pairs)}** row(s) loaded from `data/eval_gold.json`.",
+        }
+    )
+    if not pairs:
+        return {"means": {}, "n": 0, "per_row": [], "steps": trace}
+
+    trace.append(
+        {
+            "name": "RAG passes (retrieve → rerank → generate)",
+            "status": "ok",
+            "detail": f"Building **{len(pairs)}** scored rows for RAGAS (same stack as the Ask tab).",
+        }
+    )
     out = run_ragas()
+    means_bits = ", ".join(f"**{k}**={v:.3f}" for k, v in sorted(out["means"].items()))
+    trace.append(
+        {
+            "name": "RAGAS metrics",
+            "status": "ok",
+            "detail": f"Mean over questions: {means_bits}.",
+        }
+    )
     append_history(out["means"], out["n"])
-    return out
+    trace.append(
+        {
+            "name": "Persist run",
+            "status": "ok",
+            "detail": f"Appended this run to `{HISTORY_PATH.relative_to(ROOT)}`.",
+        }
+    )
+    return {**out, "steps": trace}

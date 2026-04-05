@@ -44,15 +44,14 @@ def upsert_chunks(chunks: list[dict]) -> int:
     return len(ids)
 
 
-def query_similar(query: str, k: int) -> list[dict]:
+def query_by_embedding(query_embedding: list[float], k: int) -> list[dict]:
     cli = _client()
     col = cli.get_or_create_collection(
         name=COLLECTION,
         metadata={"hnsw:space": "cosine"},
     )
-    q_emb = embed_texts([query])[0]
     res = col.query(
-        query_embeddings=[q_emb],
+        query_embeddings=[query_embedding],
         n_results=k,
         include=["documents", "metadatas", "distances"],
     )
@@ -66,6 +65,11 @@ def query_similar(query: str, k: int) -> list[dict]:
     ):
         hits.append({"text": doc or "", "metadata": meta or {}, "distance": float(dist)})
     return hits
+
+
+def query_similar(query: str, k: int) -> list[dict]:
+    q_emb = embed_texts([query])[0]
+    return query_by_embedding(q_emb, k)
 
 
 def collection_count() -> int:
