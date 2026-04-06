@@ -12,6 +12,19 @@ license: mit
 
 # Production RAG System with Evaluation Dashboard
 
+<p align="center">
+  <img src="assets/readme-hero.svg" alt="Production RAG Studio — UI + pipeline verification" width="100%" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/ArttuAn/production-rag-system"><img alt="repo" src="https://img.shields.io/badge/GitHub-production--rag--system-111827?logo=github" /></a>
+  <img alt="ui" src="https://img.shields.io/badge/UI-Gradio-6D28D9" />
+  <img alt="eval" src="https://img.shields.io/badge/Eval-RAGAS-059669" />
+  <img alt="vector" src="https://img.shields.io/badge/Vector-Chroma-0EA5E9" />
+  <img alt="rerank" src="https://img.shields.io/badge/Rerank-FlashRank-F59E0B" />
+  <img alt="emb" src="https://img.shields.io/badge/Embeddings-text--embedding--3--small-8B5CF6" />
+</p>
+
 Retrieval stack over a **public corpus** (EU AI Act consolidated text from [EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689) and **arXiv** abstracts), with **automated [RAGAS](https://docs.ragas.io/)** metrics recorded over time for a simple evaluation dashboard in **Gradio**.
 
 ## Architecture
