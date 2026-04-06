@@ -13,7 +13,7 @@ license: mit
 # Production RAG System with Evaluation Dashboard
 
 <p align="center">
-  <img src="assets/readme-hero.svg" alt="Production RAG Studio — UI + pipeline verification" width="100%" />
+  <img src="https://raw.githubusercontent.com/ArttuAn/production-rag-system/main/assets/readme-hero.svg" alt="Production RAG Studio — UI + pipeline verification" width="100%" />
 </p>
 
 <p align="center">
