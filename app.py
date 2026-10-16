@@ -271,4 +271,8 @@ with gr.Blocks(
 
 
 if __name__ == "__main__":
-    demo.launch()
+    from src.access import launch_options
+
+    options = launch_options()
+    demo.queue(max_size=16, default_concurrency_limit=2, api_open=False)
+    demo.launch(**options)

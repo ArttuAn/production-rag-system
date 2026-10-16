@@ -136,3 +136,17 @@ Scores depend on corpus freshness, chunking, models, and judge variance. After y
 ## License
 
 MIT
+
+## Authentication for the demo
+
+Set `RAG_PASSWORD` to a unique random value of at least 32 characters before
+launching `app.py`. The username defaults to `admin` and can be changed using
+`RAG_USERNAME`. Missing or short credentials prevent launch. The Gradio login
+protects the billed chat and evaluation functions, including API access.
+
+The default listener is loopback; set `GRADIO_SERVER_NAME` explicitly for an
+intended remote deployment and use HTTPS. Public share links are disabled. The
+event queue accepts at most 16 waiting jobs, defaults to two concurrent jobs,
+and does not expose a direct REST bypass of the queue. Configure provider
+spending caps as a separate deployment control. This does not deploy the app
+or change any currently hosted instance.
